@@ -1,22 +1,45 @@
 // Hero Slider
 const heroSlider = {
-  slides: document.querySelectorAll('.hero-slide'),
-  dots: document.querySelectorAll('.slider-dot'),
-  progressBar: document.querySelector('.slider-progress-bar'),
-  currentDisplay: document.querySelector('.slide-counter .current'),
+  slides: null,
+  dots: null,
+  progressBar: null,
+  currentDisplay: null,
   currentSlide: 0,
   slideInterval: null,
   slideDuration: 4000,
   isAnimating: false,
+  hoverEnabled: false,
 
   init() {
-    if (this.slides.length === 0) return;
+    // Query elements fresh
+    this.slides = document.querySelectorAll('.hero-slide');
+    this.dots = document.querySelectorAll('.slider-dot');
+    this.progressBar = document.querySelector('.slider-progress-bar');
+    this.currentDisplay = document.querySelector('.slide-counter .current');
     
+    if (!this.slides || this.slides.length === 0) {
+      console.warn('No slides found');
+      return;
+    }
+    
+    // First slide is already visible via CSS, just ensure active class
     this.slides[0].classList.add('active');
-    if (this.dots.length > 0) this.dots[0].classList.add('active');
+    if (this.dots && this.dots.length > 0) this.dots[0].classList.add('active');
     this.updateCounter();
-    this.startAutoSlide();
+    
+    // Start auto slideshow
     this.bindEvents();
+    
+    // Use setTimeout for first interval to ensure everything is ready
+    const self = this;
+    setTimeout(function() {
+      self.startAutoSlide();
+    }, 100);
+    
+    // Enable hover pause after first slide change
+    setTimeout(function() {
+      self.hoverEnabled = true;
+    }, self.slideDuration + 500);
   },
 
   updateCounter() {
@@ -65,7 +88,12 @@ const heroSlider = {
   startAutoSlide() {
     this.stopAutoSlide();
     this.resetProgressBar();
-    this.slideInterval = setInterval(() => this.nextSlide(), this.slideDuration);
+    const self = this;
+    this.slideInterval = setInterval(function() {
+      if (!self.isAnimating) {
+        self.nextSlide();
+      }
+    }, this.slideDuration);
   },
 
   stopAutoSlide() {
@@ -101,11 +129,15 @@ const heroSlider = {
       }
     });
 
-    // Pause on hover
+    // Pause on hover - only after first slide transition
     const hero = document.querySelector('.hero');
     if (hero) {
-      hero.addEventListener('mouseenter', () => this.stopAutoSlide());
-      hero.addEventListener('mouseleave', () => this.startAutoSlide());
+      hero.addEventListener('mouseenter', () => {
+        if (this.hoverEnabled && this.slideInterval) this.stopAutoSlide();
+      });
+      hero.addEventListener('mouseleave', () => {
+        if (this.hoverEnabled) this.startAutoSlide();
+      });
     }
 
     // Touch/swipe support
@@ -135,8 +167,30 @@ const heroSlider = {
   }
 };
 
-// Initialize slider
-heroSlider.init();
+// Initialize slider as soon as possible
+(function initSlider() {
+  function doInit() {
+    if (!heroSlider.slideInterval) {
+      heroSlider.init();
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', doInit);
+  } else {
+    doInit();
+  }
+  
+  // Backup: also init on window load in case DOMContentLoaded missed
+  window.addEventListener('load', doInit);
+  
+  // Restart slider when tab becomes visible again
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && heroSlider.slides && heroSlider.slides.length > 0) {
+      heroSlider.startAutoSlide();
+    }
+  });
+})();
 
 // Nav toggle
 const navToggle = document.querySelector('.nav-toggle');

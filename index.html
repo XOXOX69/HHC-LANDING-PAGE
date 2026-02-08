@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <title>HHC FRANCHISE HUB</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Critical CSS for instant hero display -->
+  <style>
+    .hero-slide:first-child {
+      opacity: 1 !important;
+      visibility: visible !important;
+      background-size: cover;
+      background-position: top center;
+    }
+  </style>
+  <!-- Preload hero image -->
+  <link rel="preload" href="hero1.jpg.png" as="image" />
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Styles -->
@@ -49,7 +60,7 @@
       <!-- Hero Slider -->
       <div class="hero-slider-wrapper">
         <div class="hero-slider" id="heroSlider">
-          <div class="hero-slide active"></div>
+          <div class="hero-slide active" style="opacity:1;visibility:visible;background-image:url('hero1.jpg.png');transform:scale(1.08);"></div>
           <div class="hero-slide"></div>
           <div class="hero-slide"></div>
           <div class="hero-slide"></div>

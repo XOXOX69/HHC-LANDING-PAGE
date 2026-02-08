@@ -316,6 +316,14 @@ button {
 
 .hero-slide:nth-child(1) {
   background-image: url('hero1.jpg.png');
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1.08);
+}
+
+.hero-slide:nth-child(1).prev {
+  opacity: 0 !important;
+  transform: scale(1.15);
 }
 
 .hero-slide:nth-child(2) {
