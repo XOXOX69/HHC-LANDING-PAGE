@@ -110,6 +110,7 @@ button {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  flex-shrink: 0;
 }
 
 .nav-brand-text {
@@ -118,6 +119,7 @@ button {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
+  white-space: nowrap;
 }
 
 .nav-brand-text span:last-child {
@@ -130,8 +132,8 @@ button {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 1.8rem;
-  font-size: 0.9rem;
+  gap: 1.5rem;
+  font-size: 0.85rem;
 }
 
 .nav-link {
@@ -139,6 +141,7 @@ button {
   color: var(--muted);
   padding-block: 0.25rem;
   transition: color var(--transition-fast);
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -230,6 +233,7 @@ button {
   display: flex;
   align-items: center;
   gap: 0.9rem;
+  flex-shrink: 0;
 }
 
 .btn-primary {
@@ -246,6 +250,7 @@ button {
   background-image: linear-gradient(120deg, #b8860b, #d4a843);
   box-shadow: 0 16px 34px rgba(184, 134, 11, 0.5);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+  white-space: nowrap;
 }
 
 .btn-primary:hover {
@@ -262,6 +267,7 @@ button {
   color: var(--text);
   background: none !important;
   transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
 }
 
 .btn-outline:hover {
