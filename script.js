@@ -316,3 +316,24 @@ aboutTabBtns.forEach(btn => {
     document.getElementById(targetTab).classList.add('active');
   });
 });
+
+// Handle dropdown links to About subsections
+const dropdownLinks = document.querySelectorAll('.dropdown-link');
+
+dropdownLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href').replace('#', '');
+    const targetPanel = document.getElementById(targetId);
+    const targetBtn = document.querySelector(`[data-about-tab="${targetId}"]`);
+    
+    if (targetPanel && targetBtn) {
+      // Remove active from all buttons and panels
+      aboutTabBtns.forEach(b => b.classList.remove('active'));
+      aboutPanels.forEach(p => p.classList.remove('active'));
+      
+      // Activate the target tab and panel
+      targetBtn.classList.add('active');
+      targetPanel.classList.add('active');
+    }
+  });
+});
