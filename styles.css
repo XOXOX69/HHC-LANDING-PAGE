@@ -856,19 +856,6 @@ button {
   pointer-events: none;
 }
 
-.contact-card-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: #111827;
-  box-shadow: 0 8px 24px rgba(250, 204, 21, 0.25);
-}
-
 .contact-card h3 {
   font-size: 1.35rem;
   margin-bottom: 0.75rem;
