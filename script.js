@@ -298,3 +298,21 @@ if (contactForm) {
     }
   });
 }
+
+// About Section Tabs
+const aboutTabBtns = document.querySelectorAll('.about-tab-btn');
+const aboutPanels = document.querySelectorAll('.about-panel');
+
+aboutTabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetTab = btn.getAttribute('data-about-tab');
+    
+    // Remove active from all buttons and panels
+    aboutTabBtns.forEach(b => b.classList.remove('active'));
+    aboutPanels.forEach(p => p.classList.remove('active'));
+    
+    // Add active to clicked button and corresponding panel
+    btn.classList.add('active');
+    document.getElementById(targetTab).classList.add('active');
+  });
+});
