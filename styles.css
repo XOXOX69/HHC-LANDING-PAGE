@@ -556,6 +556,12 @@ button {
     linear-gradient(180deg, #0a0a0a 0%, #1a1207 30%, #0d0d0d 100%);
   position: relative;
   overflow: hidden;
+  perspective: 1200px;
+}
+
+#about .container {
+  position: relative;
+  z-index: 2;
 }
 
 #about::before {
@@ -589,22 +595,76 @@ button {
   pointer-events: none;
 }
 
+#about .section-header {
+  transform: translateZ(40px);
+  transform-style: preserve-3d;
+}
+
+#about .section-title {
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 0 40px rgba(218, 165, 32, 0.3);
+}
+
 .award-banner {
   margin-top: 2rem;
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.5), 
-    0 0 80px rgba(218, 165, 32, 0.25),
-    0 0 120px rgba(180, 134, 11, 0.15);
+  overflow: visible;
   position: relative;
   z-index: 1;
+  transform: perspective(1000px) rotateX(2deg) translateZ(0);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.award-banner:hover {
+  transform: perspective(1000px) rotateX(0deg) translateZ(20px);
+}
+
+.award-banner::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.6) 0%, 
+    rgba(218, 165, 32, 0.3) 25%,
+    rgba(139, 90, 43, 0.3) 50%,
+    rgba(218, 165, 32, 0.3) 75%,
+    rgba(255, 215, 0, 0.6) 100%);
+  z-index: -1;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.award-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: 10%;
+  right: 10%;
+  height: 60px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0.5) 0%, transparent 70%);
+  filter: blur(20px);
+  transform: rotateX(90deg);
+  transform-origin: top;
+  z-index: -2;
 }
 
 .award-banner-img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 100px rgba(218, 165, 32, 0.2),
+    inset 0 0 0 1px rgba(255, 215, 0, 0.1);
 }
 
 /* --------------------
