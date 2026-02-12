@@ -548,20 +548,44 @@ button {
    AWARDS
 --------------------- */
 #about {
-  background: linear-gradient(180deg, 
-    rgba(15, 23, 42, 1) 0%, 
-    rgba(30, 20, 10, 0.95) 30%,
-    rgba(45, 30, 15, 0.9) 50%,
-    rgba(30, 20, 10, 0.95) 70%,
-    rgba(15, 23, 42, 1) 100%);
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180, 134, 11, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(218, 165, 32, 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(218, 165, 32, 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(139, 90, 43, 0.2) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0a 0%, #1a1207 30%, #0d0d0d 100%);
   position: relative;
+  overflow: hidden;
 }
 
 #about::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(180, 134, 11, 0.15) 0%, transparent 60%);
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 15%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 30% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 15%),
+    radial-gradient(circle at 70% 85%, rgba(255, 215, 0, 0.02) 0%, transparent 15%),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.04) 0%, transparent 30%);
+  pointer-events: none;
+  animation: shimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+#about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 200px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 200, 100, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -569,7 +593,12 @@ button {
   margin-top: 2rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(180, 134, 11, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5), 
+    0 0 80px rgba(218, 165, 32, 0.25),
+    0 0 120px rgba(180, 134, 11, 0.15);
+  position: relative;
+  z-index: 1;
 }
 
 .award-banner-img {
