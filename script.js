@@ -337,3 +337,111 @@ dropdownLinks.forEach(link => {
     }
   });
 });
+
+// Franchise Carousel
+const franchiseCarousel = {
+  currentIndex: 0,
+  cardWidth: 316, // card width + gap
+  visibleCards: 3,
+  
+  init() {
+    this.tabBtns = document.querySelectorAll('.tab-btn-underline');
+    this.tracks = document.querySelectorAll('.franchise-carousel-track');
+    this.prevBtn = document.querySelector('.carousel-prev');
+    this.nextBtn = document.querySelector('.carousel-next');
+    
+    if (!this.tabBtns.length || !this.tracks.length) return;
+    
+    this.bindEvents();
+    this.updateVisibleCards();
+    window.addEventListener('resize', () => this.updateVisibleCards());
+  },
+  
+  updateVisibleCards() {
+    const width = window.innerWidth;
+    if (width < 640) {
+      this.visibleCards = 1;
+      this.cardWidth = 316;
+    } else if (width < 900) {
+      this.visibleCards = 2;
+      this.cardWidth = 316;
+    } else {
+      this.visibleCards = 3;
+      this.cardWidth = 316;
+    }
+  },
+  
+  bindEvents() {
+    // Tab switching
+    this.tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetCategory = btn.dataset.tab;
+        
+        // Update active tab
+        this.tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Show corresponding track
+        this.tracks.forEach(track => {
+          if (track.dataset.category === targetCategory) {
+            track.style.display = 'flex';
+          } else {
+            track.style.display = 'none';
+          }
+        });
+        
+        // Reset carousel position
+        this.currentIndex = 0;
+        this.updateCarousel();
+      });
+    });
+    
+    // Arrow navigation
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => this.prev());
+    }
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => this.next());
+    }
+  },
+  
+  getActiveTrack() {
+    return document.querySelector('.franchise-carousel-track[style*="flex"], .franchise-carousel-track:not([style*="none"])');
+  },
+  
+  getMaxIndex() {
+    const track = this.getActiveTrack();
+    if (!track) return 0;
+    const cards = track.querySelectorAll('.franchise-carousel-card');
+    return Math.max(0, cards.length - this.visibleCards);
+  },
+  
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateCarousel();
+    }
+  },
+  
+  next() {
+    if (this.currentIndex < this.getMaxIndex()) {
+      this.currentIndex++;
+      this.updateCarousel();
+    }
+  },
+  
+  updateCarousel() {
+    const track = this.getActiveTrack();
+    if (!track) return;
+    
+    const offset = -this.currentIndex * this.cardWidth;
+    track.style.transform = `translateX(${offset}px)`;
+  }
+};
+
+// Initialize franchise carousel when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => franchiseCarousel.init());
+} else {
+  franchiseCarousel.init();
+}

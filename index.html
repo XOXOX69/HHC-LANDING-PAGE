@@ -136,7 +136,8 @@
     </section>
 
     <!-- FRANCHISE OPPORTUNITIES -->
-    <section class="section" id="franchises">
+    <section class="section franchise-section" id="franchises">
+      <div class="franchise-bg-pattern"></div>
       <div class="container">
         <header class="section-header reveal">
           <p class="section-kicker">Franchise Opportunities</p>
@@ -146,103 +147,126 @@
           </p>
         </header>
 
-        <div class="franchise-tabs">
-          <button class="tab-btn active" data-tab="all">All</button>
-          <button class="tab-btn" data-tab="food">Food</button>
-          <button class="tab-btn" data-tab="wellness">Health & Wellness</button>
-          <button class="tab-btn" data-tab="digital">Digital</button>
+        <div class="franchise-tabs-underline">
+          <button class="tab-btn-underline active" data-tab="food">Food</button>
+          <button class="tab-btn-underline" data-tab="wellness">Health and Wellness</button>
+          <button class="tab-btn-underline" data-tab="digital">Digital</button>
         </div>
 
-        <div class="franchise-grid">
-          <!-- Food 1 -->
-          <article class="franchise-card reveal delay-1" data-category="food">
-            <div class="franchise-img" style="background-image: linear-gradient(135deg, #f97316, #b91c1c);"></div>
-            <div class="franchise-content">
-              <p class="franchise-tag">Food Franchise</p>
-              <p class="franchise-text">
-                A high-volume siomai concept ideal for terminals, schools, and busy streets. Simple operations, small footprint, big appetite appeal.
-              </p>
-              <div class="franchise-meta">
-                <span><strong>Best for:</strong> High foot-traffic areas</span>
-                <a href="#contact" class="link-pill">
-                  Get package details
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </article>
+        <div class="franchise-carousel-wrapper">
+          <button class="carousel-arrow carousel-prev" aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          
+          <div class="franchise-carousel">
+            <div class="franchise-carousel-track" data-category="food">
+              <!-- Siopao Da King -->
+              <article class="franchise-carousel-card card-gold">
+                <div class="carousel-card-logo">
+                  <img src="siopao-da-king-logo.png" alt="Siopao Da King" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <h3 class="carousel-card-title-fallback" style="display:none;">Siopao Da King</h3>
+                </div>
+                <p class="carousel-card-text">
+                  Are you craving for a delectable snack that will satisfy your taste buds? Then, look no further than Siopao Da King! The ultimate siopao experience is with the most delectable franchise in town! So, sink your teeth into fluffy steamed buns bursting with succulent fillings! Savor the unparalleled sensation of pure culinary bliss with every bite that only Siopao Da King can bring!
+                </p>
+                <a href="#contact" class="carousel-card-link">Get Started &gt;</a>
+              </article>
 
-          <!-- Food 2 -->
-          <article class="franchise-card reveal delay-2" data-category="food">
-            <div class="franchise-img" style="background-image: linear-gradient(135deg, #22c55e, #a855f7);"></div>
-            <div class="franchise-content">
-              <p class="franchise-tag">Food Franchise</p>
-              <p class="franchise-text">
-                Trendy drink concept with a flexible menu of milk tea, fruit teas, and specialty beverages. Perfect for malls and campuses.
-              </p>
-              <div class="franchise-meta">
-                <span><strong>Best for:</strong> Malls & lifestyle hubs</span>
-                <a href="#contact" class="link-pill">
-                  Inquire now
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </article>
+              <!-- Potato King -->
+              <article class="franchise-carousel-card card-gold">
+                <div class="carousel-card-logo">
+                  <img src="potato-king-logo.png" alt="Potato King" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <h3 class="carousel-card-title-fallback" style="display:none;">Potato King</h3>
+                </div>
+                <p class="carousel-card-text">
+                  Satisfy your cravings with our crave-worthy fries. Hot, crispy, and seasoned to perfection with a mouthwatering blend of cheese, BBQ, and sour cream flavors. It's the ultimate indulgence and the nearest thing to tasting magic!
+                </p>
+                <a href="#contact" class="carousel-card-link">Get Started &gt;</a>
+              </article>
 
-          <!-- Food 3 -->
-          <article class="franchise-card reveal delay-3" data-category="food">
-            <div class="franchise-img" style="background-image: linear-gradient(135deg, #fb7185, #f97316);"></div>
-            <div class="franchise-content">
-              <p class="franchise-tag">Food Franchise</p>
-              <p class="franchise-text">
-                Burger and fries concept tailored for quick service and repeat customers, with options for bundle promos and value meals.
-              </p>
-              <div class="franchise-meta">
-                <span><strong>Best for:</strong> Communities & terminals</span>
-                <a href="#contact" class="link-pill">
-                  Request full menu
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </article>
+              <!-- Boy Bondat -->
+              <article class="franchise-carousel-card card-maroon">
+                <div class="carousel-card-logo">
+                  <img src="boy-bondat-logo.png" alt="Boy Bondat" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <h3 class="carousel-card-title-fallback" style="display:none;">Boy Bondat</h3>
+                </div>
+                <p class="carousel-card-text">
+                  Boy Bondat is a taste of lutong bahay in a rolling, roving truck! If you cannot order online, our food truck will come to you! You can choose from our beef pares, pork sisig, kare-kare, and kaldereta in two varieties, Bondat Meal and Semi Bondat Meals. Order your meal or get your food truck franchise!
+                </p>
+                <a href="#contact" class="carousel-card-link">Get Started &gt;</a>
+              </article>
 
-          <!-- Wellness -->
-          <article class="franchise-card reveal delay-1" data-category="wellness">
-            <div class="franchise-img" style="background-image: linear-gradient(135deg, #0ea5e9, #22c55e);"></div>
-            <div class="franchise-content">
-              <p class="franchise-tag">Health & Wellness</p>
-              <p class="franchise-text">
-                A portfolio of health, beauty, and wellness products that can be sold in physical outlets or online, with training and marketing tools included.
-              </p>
-              <div class="franchise-meta">
-                <span><strong>Best for:</strong> Home-based & online sellers</span>
-                <a href="#contact" class="link-pill">
-                  See product list
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </article>
+              <!-- Boss Siomai -->
+              <article class="franchise-carousel-card card-gold">
+                <div class="carousel-card-logo">
+                  <img src="boss-siomai-logo.png" alt="Boss Siomai" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <h3 class="carousel-card-title-fallback" style="display:none;">Boss Siomai</h3>
+                </div>
+                <p class="carousel-card-text">
+                  A high-volume siomai concept ideal for terminals, schools, and busy streets. Simple operations, small footprint, big appetite appeal. Best for high foot-traffic areas.
+                </p>
+                <a href="boss-siomai.html" class="carousel-card-link">Get Started &gt;</a>
+              </article>
 
-          <!-- Digital -->
-          <article class="franchise-card reveal delay-2" data-category="digital">
-            <div class="franchise-img" style="background-image: linear-gradient(135deg, #6366f1, #0ea5e9);"></div>
-            <div class="franchise-content">
-              <p class="franchise-tag">Digital Franchise</p>
-              <p class="franchise-text">
-                Build a network in your city with a Filipino-owned delivery and services platform. Earn from bookings and partner onboarding.
-              </p>
-              <div class="franchise-meta">
-                <span><strong>Best for:</strong> Tech-savvy entrepreneurs</span>
-                <a href="#contact" class="link-pill">
-                  Learn how it works
-                  <span>→</span>
-                </a>
-              </div>
+              <!-- Noodle King -->
+              <article class="franchise-carousel-card card-gold">
+                <div class="carousel-card-logo">
+                  <img src="noodle-king-logo.png" alt="Noodle King" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <h3 class="carousel-card-title-fallback" style="display:none;">Noodle King</h3>
+                </div>
+                <p class="carousel-card-text">
+                  Delicious noodle dishes served hot and fresh. A crowd favorite for quick meals and satisfying flavors. Perfect for food courts and busy locations.
+                </p>
+                <a href="noodle-king.html" class="carousel-card-link">Get Started &gt;</a>
+              </article>
             </div>
-          </article>
+
+            <div class="franchise-carousel-track" data-category="wellness" style="display: none;">
+              <!-- Health & Wellness -->
+              <article class="franchise-carousel-card card-teal">
+                <div class="carousel-card-logo">
+                  <h3 class="carousel-card-title-fallback">Health & Wellness Products</h3>
+                </div>
+                <p class="carousel-card-text">
+                  A portfolio of health, beauty, and wellness products that can be sold in physical outlets or online, with training and marketing tools included. Perfect for home-based and online sellers.
+                </p>
+                <a href="#contact" class="carousel-card-link">Get Started &gt;</a>
+              </article>
+
+              <!-- Herrera Pharmacy -->
+              <article class="franchise-carousel-card card-teal">
+                <div class="carousel-card-logo">
+                  <img src="herrera-pharmacy-logo.png" alt="Herrera Pharmacy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                  <h3 class="carousel-card-title-fallback" style="display:none;">Herrera Pharmacy</h3>
+                </div>
+                <p class="carousel-card-text">
+                  Your trusted community pharmacy franchise offering medicines, health products, and wellness services. Serve your community with quality healthcare access.
+                </p>
+                <a href="herrera-pharmacy.html" class="carousel-card-link">Get Started &gt;</a>
+              </article>
+            </div>
+
+            <div class="franchise-carousel-track" data-category="digital" style="display: none;">
+              <!-- Digital Franchise -->
+              <article class="franchise-carousel-card card-purple">
+                <div class="carousel-card-logo">
+                  <h3 class="carousel-card-title-fallback">Digital Services Platform</h3>
+                </div>
+                <p class="carousel-card-text">
+                  Build a network in your city with a Filipino-owned delivery and services platform. Earn from bookings and partner onboarding. Perfect for tech-savvy entrepreneurs.
+                </p>
+                <a href="#contact" class="carousel-card-link">Get Started &gt;</a>
+              </article>
+            </div>
+          </div>
+
+          <button class="carousel-arrow carousel-next" aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
 
         <!-- STATS STRIP -->
