@@ -1,3 +1,9 @@
+.nav-logo-cta {
+  height: 48px;
+  width: auto;
+  margin: 0 1rem;
+  vertical-align: middle;
+}
 :root {
   --bg: #0b1220;
   --bg-alt: #111827;
