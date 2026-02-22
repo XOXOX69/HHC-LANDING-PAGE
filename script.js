@@ -455,3 +455,270 @@ if (document.readyState === 'loading') {
 } else {
   franchiseCarousel.init();
 }
+
+// Branch coverflow carousel (BIGSTOP branches section)
+const branchCoverflow = {
+  root: null,
+  stage: null,
+  cards: [],
+  dotsWrap: null,
+  dots: [],
+  prevBtn: null,
+  nextBtn: null,
+  currentIndex: 0,
+  autoInterval: 4200,
+  timer: null,
+  touchStartX: 0,
+  stateClasses: ['is-active', 'is-left-1', 'is-right-1', 'is-left-2', 'is-right-2', 'is-hidden'],
+
+  init() {
+    this.root = document.querySelector('.bigstop-branches-coverflow');
+    if (!this.root) return;
+
+    this.stage = this.root.querySelector('.bigstop-branches-stage');
+    this.cards = Array.from(this.root.querySelectorAll('.bigstop-branch-card'));
+    this.dotsWrap = document.getElementById('bigstopBranchesPagination');
+    this.prevBtn = this.root.querySelector('.bigstop-branch-nav.prev');
+    this.nextBtn = this.root.querySelector('.bigstop-branch-nav.next');
+
+    if (!this.cards.length) return;
+
+    const activeIndex = this.cards.findIndex(card => card.classList.contains('is-active'));
+    this.currentIndex = activeIndex >= 0 ? activeIndex : 0;
+
+    this.buildDots();
+    this.bindEvents();
+    this.update();
+    this.startAuto();
+  },
+
+  normalizeOffset(rawOffset, total) {
+    let offset = rawOffset;
+    const half = Math.floor(total / 2);
+    if (offset > half) offset -= total;
+    if (offset < -half) offset += total;
+    return offset;
+  },
+
+  update() {
+    const total = this.cards.length;
+
+    this.cards.forEach((card, index) => {
+      const offset = this.normalizeOffset(index - this.currentIndex, total);
+      card.classList.remove(...this.stateClasses);
+
+      if (offset === 0) {
+        card.classList.add('is-active');
+      } else if (offset === -1) {
+        card.classList.add('is-left-1');
+      } else if (offset === 1) {
+        card.classList.add('is-right-1');
+      } else if (offset === -2) {
+        card.classList.add('is-left-2');
+      } else if (offset === 2) {
+        card.classList.add('is-right-2');
+      } else {
+        card.classList.add('is-hidden');
+      }
+    });
+
+    this.dots.forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === this.currentIndex);
+      dot.setAttribute('aria-current', index === this.currentIndex ? 'true' : 'false');
+    });
+  },
+
+  goTo(index) {
+    const total = this.cards.length;
+    this.currentIndex = (index + total) % total;
+    this.update();
+  },
+
+  next() {
+    this.goTo(this.currentIndex + 1);
+  },
+
+  prev() {
+    this.goTo(this.currentIndex - 1);
+  },
+
+  buildDots() {
+    if (!this.dotsWrap) return;
+    this.dotsWrap.innerHTML = '';
+    this.dots = this.cards.map((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'bigstop-branch-dot';
+      dot.textContent = String(index + 1);
+      dot.setAttribute('aria-label', `Show branch ${index + 1}`);
+      dot.addEventListener('click', () => {
+        this.goTo(index);
+        this.restartAuto();
+      });
+      this.dotsWrap.appendChild(dot);
+      return dot;
+    });
+  },
+
+  bindEvents() {
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => {
+        this.prev();
+        this.restartAuto();
+      });
+    }
+
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => {
+        this.next();
+        this.restartAuto();
+      });
+    }
+
+    this.cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        if (index === this.currentIndex) return;
+        this.goTo(index);
+        this.restartAuto();
+      });
+    });
+
+    this.root.addEventListener('mouseenter', () => this.stopAuto());
+    this.root.addEventListener('mouseleave', () => this.startAuto());
+
+    if (this.stage) {
+      this.stage.addEventListener('touchstart', (event) => {
+        this.touchStartX = event.changedTouches[0].screenX;
+      }, { passive: true });
+
+      this.stage.addEventListener('touchend', (event) => {
+        const touchEndX = event.changedTouches[0].screenX;
+        const deltaX = this.touchStartX - touchEndX;
+
+        if (Math.abs(deltaX) < 40) return;
+        if (deltaX > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+        this.restartAuto();
+      }, { passive: true });
+    }
+  },
+
+  startAuto() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.stopAuto();
+    this.timer = setInterval(() => {
+      this.next();
+    }, this.autoInterval);
+  },
+
+  stopAuto() {
+    if (!this.timer) return;
+    clearInterval(this.timer);
+    this.timer = null;
+  },
+
+  restartAuto() {
+    this.startAuto();
+  }
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => branchCoverflow.init());
+} else {
+  branchCoverflow.init();
+}
+
+// --------------------
+// 3D tilt cards + parallax ambience
+// --------------------
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function initTiltCards() {
+  if (prefersReducedMotion.matches) return;
+  const tiltCards = document.querySelectorAll('[data-tilt]');
+  tiltCards.forEach(card => {
+    if (card.dataset.tiltBound) return;
+    card.dataset.tiltBound = 'true';
+
+    const strength = Number(card.dataset.tilt) || 10;
+    const glow = document.createElement('span');
+    glow.className = 'tilt-glow';
+    card.appendChild(glow);
+
+    const handleMove = (event) => {
+      if (event.pointerType === 'touch') return;
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rotateX = ((y / rect.height) - 0.5) * -strength;
+      const rotateY = ((x / rect.width) - 0.5) * strength;
+
+      card.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+      glow.style.opacity = 1;
+      glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.24), rgba(108,173,255,0.1), transparent 60%)`;
+      card.classList.add('tilt-active');
+    };
+
+    const reset = () => {
+      card.style.transform = '';
+      glow.style.opacity = 0;
+      card.classList.remove('tilt-active');
+    };
+
+    card.addEventListener('pointermove', handleMove);
+    card.addEventListener('pointerleave', reset);
+  });
+}
+
+function initParallaxLayers() {
+  if (prefersReducedMotion.matches) return;
+  const layers = Array.from(document.querySelectorAll('[data-parallax]'));
+  if (!layers.length) return;
+
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  const damp = 0.08;
+
+  window.addEventListener('pointermove', (event) => {
+    targetX = (event.clientX / window.innerWidth) - 0.5;
+    targetY = (event.clientY / window.innerHeight) - 0.5;
+  });
+
+  const animate = () => {
+    currentX += (targetX - currentX) * damp;
+    currentY += (targetY - currentY) * damp;
+
+    layers.forEach(layer => {
+      const depth = Number(layer.dataset.parallax) || 10;
+      const translateX = currentX * depth;
+      const translateY = currentY * depth;
+      layer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+    });
+
+    requestAnimationFrame(animate);
+  };
+
+  animate();
+}
+
+const runInteractiveUpgrades = () => {
+  initTiltCards();
+  initParallaxLayers();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', runInteractiveUpgrades);
+} else {
+  runInteractiveUpgrades();
+}
+
+prefersReducedMotion.addEventListener('change', (event) => {
+  if (!event.matches) {
+    runInteractiveUpgrades();
+  }
+});
