@@ -755,6 +755,17 @@ prefersReducedMotion.addEventListener('change', (event) => {
   });
 })();
 
+// Ensure hero video autoplays (muted for browser autoplay policies)
+(function initHeroVideoAutoplay() {
+  const vid = document.querySelector('.hero-video-frame video');
+  if (!vid) return;
+  vid.muted = true;
+  const tryPlay = () => vid.play().catch(() => {});
+  vid.addEventListener('canplay', tryPlay, { once: true });
+  window.addEventListener('load', tryPlay, { once: true });
+  document.addEventListener('click', tryPlay, { once: true });
+})();
+
 // Floating hero video drag (Bigstop hero)
 (function initFloatingHeroVideo() {
   const thumb = document.querySelector('.hero-video-thumb');
