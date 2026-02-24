@@ -722,3 +722,89 @@ prefersReducedMotion.addEventListener('change', (event) => {
     runInteractiveUpgrades();
   }
 });
+
+// Why modal (Bigstop page)
+(function initWhyModal() {
+  const trigger = document.getElementById('whyHeroCard');
+  const modal = document.getElementById('whyModal');
+  if (!trigger || !modal) return;
+
+  const closeBtn = document.getElementById('whyModalClose');
+
+  const open = () => {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+  };
+
+  const close = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  trigger.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('why-modal-backdrop')) {
+      close();
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      close();
+    }
+  });
+})();
+
+// Floating hero video drag (Bigstop hero)
+(function initFloatingHeroVideo() {
+  const thumb = document.querySelector('.hero-video-thumb');
+  if (!thumb) return;
+
+  let dragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
+
+  const setPositionFromRect = () => {
+    const rect = thumb.getBoundingClientRect();
+    thumb.style.left = `${rect.left}px`;
+    thumb.style.top = `${rect.top}px`;
+    thumb.style.right = 'auto';
+    thumb.style.bottom = 'auto';
+  };
+
+  // Convert initial bottom/right into explicit left/top so dragging works smoothly
+  window.addEventListener('load', setPositionFromRect, { once: true });
+
+  const onPointerMove = (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    thumb.style.left = `${startLeft + dx}px`;
+    thumb.style.top = `${startTop + dy}px`;
+  };
+
+  const stopDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    thumb.classList.remove('dragging');
+    document.removeEventListener('pointermove', onPointerMove);
+    document.removeEventListener('pointerup', stopDrag);
+  };
+
+  thumb.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    thumb.classList.add('dragging');
+    startX = e.clientX;
+    startY = e.clientY;
+
+    const rect = thumb.getBoundingClientRect();
+    startLeft = rect.left;
+    startTop = rect.top;
+
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', stopDrag, { once: true });
+    e.preventDefault();
+  });
+})();
