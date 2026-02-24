@@ -8140,7 +8140,7 @@ body.modal-open {
   position: fixed;
   right: clamp(12px, 2vw, 18px);
   bottom: clamp(12px, 2vw, 18px);
-  z-index: 50;
+  z-index: 40; /* sits below video thumb */
   padding: 0.6rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.35);
