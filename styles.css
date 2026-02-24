@@ -4694,8 +4694,8 @@ body.modal-open {
 .bigstop-page .hero-content-wrapper {
   width: 100%;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   gap: clamp(1.2rem, 3vw, 2rem);
   flex-wrap: nowrap;
   position: static;
@@ -4708,8 +4708,9 @@ body.modal-open {
   backdrop-filter: none;
   border-radius: 0;
   padding: 0;
-  max-width: min(540px, 90%);
-  width: fit-content;
+  max-width: min(560px, 90%);
+  width: 100%;
+  flex: 1 1 0;
 }
 
 .bigstop-page .hero-video-thumb {
@@ -4717,8 +4718,9 @@ body.modal-open {
   transform: none;
   z-index: 30;
   width: clamp(320px, 32vw, 420px);
-  margin-left: 0.5rem;
+  margin-left: auto;
   margin-bottom: 0.6rem;
+  flex: 0 0 auto;
   border-radius: 14px;
   border: 1px solid rgba(158, 191, 239, 0.25);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.38);
