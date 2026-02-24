@@ -4713,12 +4713,12 @@ body.modal-open {
 }
 
 .bigstop-page .hero-video-thumb {
-  position: fixed;
-  bottom: clamp(1.2rem, 5vw, 3rem);
-  right: clamp(1rem, 8vw, 8rem);
+  position: absolute;
+  bottom: clamp(1.2rem, 3vw, 2rem);
+  right: clamp(1rem, 4vw, 3rem);
   left: auto;
   transform: none;
-  z-index: 50;
+  z-index: 4;
   width: clamp(320px, 32vw, 420px);
   border-radius: 14px;
   border: 1px solid rgba(158, 191, 239, 0.25);
@@ -4760,8 +4760,8 @@ body.modal-open {
 }
 
 .bigstop-page .hero-video-thumb.dragging {
-  cursor: grabbing;
-  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.5);
+  cursor: default;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.38);
 }
 
 @media (max-width: 860px) {

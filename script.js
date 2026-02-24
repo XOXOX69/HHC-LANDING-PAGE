@@ -771,6 +771,9 @@ prefersReducedMotion.addEventListener('change', (event) => {
   const thumb = document.querySelector('.hero-video-thumb');
   if (!thumb) return;
 
+  // Disable dragging so the video stays within its section
+  return;
+
   let dragging = false;
   let startX = 0;
   let startY = 0;
