@@ -4714,12 +4714,13 @@ body.modal-open {
 }
 
 .bigstop-page .hero-video-thumb {
-  position: static;
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.8rem);
+  top: clamp(4.6rem, 10vh, 6.6rem);
   transform: none;
   z-index: 30;
-  width: clamp(320px, 32vw, 420px);
-  margin-left: auto;
-  margin-bottom: 0.6rem;
+  width: clamp(300px, 32vw, 420px);
+  margin: 0;
   flex: 0 0 auto;
   border-radius: 14px;
   border: 1px solid rgba(158, 191, 239, 0.25);
@@ -4768,9 +4769,11 @@ body.modal-open {
 @media (max-width: 860px) {
   .bigstop-page .hero-video-thumb {
     position: static;
+    top: auto;
+    right: auto;
     width: 100%;
     max-width: 360px;
-    margin-top: 0.6rem;
+    margin: 0.6rem auto 0;
     transform: none;
   }
 
