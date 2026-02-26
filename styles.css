@@ -8433,6 +8433,7 @@ body.modal-open {
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.9rem;
   justify-items: center;
+  flex: 1;
 }
 
 .package-points li::before {
@@ -8442,12 +8443,17 @@ body.modal-open {
 }
 
 .package-actions {
-  display: flex;
-  align-items: center;
+  display: grid;
   gap: 0.6rem;
   padding: 0 1.1rem 0.9rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-items: center;
+  margin-top: auto;
+}
+
+.package-actions .btn-solid,
+.package-actions .btn-primary-ghost {
+  width: 100%;
+  max-width: 190px;
 }
 
 .btn-solid {
@@ -8515,6 +8521,1012 @@ body.modal-open {
   margin-top: 1.6rem;
   display: flex;
   justify-content: center;
+}
+
+.siomai-master {
+  position: relative;
+  padding-block: 4.8rem;
+  background:
+    radial-gradient(130% 120% at 12% 16%, rgba(255, 176, 80, 0.2), transparent 52%),
+    radial-gradient(125% 120% at 84% 12%, rgba(73, 121, 226, 0.2), transparent 46%),
+    linear-gradient(168deg, #17172a 0%, #24120a 48%, #130d15 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.siomai-master::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(95% 110% at 16% 88%, rgba(255, 125, 32, 0.1), transparent 58%),
+    radial-gradient(75% 80% at 86% 90%, rgba(78, 139, 242, 0.1), transparent 52%);
+}
+
+.siomai-master .container {
+  position: relative;
+  z-index: 1;
+}
+
+.siomai-master-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.siomai-master-header .section-kicker {
+  color: #ffd581;
+}
+
+.siomai-master-intro {
+  margin: 0.9rem auto 0;
+  max-width: 72ch;
+  color: rgba(255, 225, 198, 0.9);
+  font-size: 1.01rem;
+  line-height: 1.75;
+}
+
+.siomai-master-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.siomai-master-stat {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 180, 99, 0.25);
+  background: rgba(56, 20, 7, 0.68);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.26);
+  padding: 1.05rem 1rem;
+}
+
+.siomai-master-stat span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: rgba(255, 216, 176, 0.86);
+}
+
+.siomai-master-stat strong {
+  display: block;
+  margin-top: 0.45rem;
+  color: #fff6ed;
+  font-size: clamp(1.25rem, 1.6vw, 1.7rem);
+  letter-spacing: -0.01em;
+}
+
+.siomai-master-stat small {
+  display: block;
+  margin-top: 0.3rem;
+  color: rgba(255, 214, 178, 0.8);
+  line-height: 1.45;
+}
+
+.siomai-master-content,
+.siomai-master-bottom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.siomai-master-card {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 176, 94, 0.24);
+  background: rgba(53, 18, 7, 0.7);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.3);
+  padding: 1.2rem;
+}
+
+.siomai-master-card h3 {
+  margin: 0 0 0.9rem;
+  color: #fff7ef;
+  font-size: 1.22rem;
+  letter-spacing: -0.01em;
+}
+
+.siomai-master-card p {
+  color: rgba(255, 227, 202, 0.88);
+  line-height: 1.68;
+}
+
+.siomai-master-metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.siomai-master-metrics li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 191, 117, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.68rem 0.8rem;
+}
+
+.siomai-master-metrics span {
+  color: rgba(255, 222, 193, 0.87);
+  font-size: 0.92rem;
+}
+
+.siomai-master-metrics strong {
+  color: #fff7f0;
+  font-size: 0.95rem;
+}
+
+.siomai-master-highlight {
+  margin-top: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 181, 102, 0.25);
+  background: linear-gradient(150deg, rgba(38, 92, 179, 0.2), rgba(214, 87, 27, 0.2));
+  padding: 0.9rem;
+}
+
+.siomai-master-highlight p {
+  margin: 0;
+  color: rgba(255, 225, 196, 0.9);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.siomai-master-highlight strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: #fff6ec;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.siomai-master-highlight small {
+  display: block;
+  margin-top: 0.25rem;
+  color: rgba(255, 214, 178, 0.84);
+}
+
+.siomai-master-table-block + .siomai-master-table-block {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 186, 106, 0.22);
+}
+
+.siomai-master-table-block h4 {
+  margin: 0;
+  color: #ffe9cf;
+  font-size: 1.01rem;
+}
+
+.siomai-master-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.55rem;
+  font-size: 0.86rem;
+}
+
+.siomai-master-table th,
+.siomai-master-table td {
+  padding: 0.52rem 0.36rem;
+  border-bottom: 1px solid rgba(255, 196, 131, 0.18);
+  text-align: left;
+}
+
+.siomai-master-table thead th {
+  color: rgba(255, 212, 169, 0.92);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.69rem;
+}
+
+.siomai-master-table tbody td {
+  color: rgba(255, 234, 213, 0.9);
+}
+
+.siomai-master-table td:last-child,
+.siomai-master-table th:last-child {
+  text-align: right;
+}
+
+.siomai-master-table tfoot td {
+  border-bottom: 0;
+  font-weight: 700;
+  color: #fff3e5;
+}
+
+.siomai-master-table-foot {
+  margin-top: 0.52rem;
+  color: rgba(255, 211, 168, 0.86);
+  font-size: 0.8rem;
+}
+
+.siomai-master-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.siomai-master-checklist li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: rgba(255, 232, 211, 0.9);
+  line-height: 1.58;
+}
+
+.siomai-master-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.57rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd16f, #ff8e4d);
+}
+
+.siomai-master-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.siomai-master-cta .btn-solid {
+  align-self: flex-start;
+  margin-top: 0.2rem;
+}
+
+.siomai-master-mini {
+  margin: 0.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.siomai-master-mini li {
+  color: rgba(255, 222, 194, 0.85);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.siomai-master-mini li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 50%;
+  background: rgba(255, 196, 126, 0.9);
+}
+
+@media (max-width: 1100px) {
+  .siomai-master-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .siomai-master-content,
+  .siomai-master-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .siomai-master {
+    padding-block: 3.7rem;
+  }
+
+  .siomai-master-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .siomai-master-card {
+    padding: 1rem;
+  }
+
+  .siomai-master-table {
+    font-size: 0.8rem;
+  }
+
+  .siomai-master-cta .btn-solid {
+    width: 100%;
+  }
+}
+
+/* React-style master section override */
+.siomai-master {
+  padding-block: 5rem;
+  background:
+    radial-gradient(95% 120% at 16% 12%, rgba(255, 164, 85, 0.24), transparent 48%),
+    radial-gradient(90% 120% at 82% 18%, rgba(88, 116, 255, 0.22), transparent 52%),
+    linear-gradient(180deg, #fff8ef 0%, #f8fbff 56%, #eef3ff 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.52);
+  border-bottom: 1px solid rgba(200, 220, 255, 0.42);
+}
+
+.siomai-master::before {
+  background:
+    radial-gradient(65% 80% at 50% 92%, rgba(245, 102, 170, 0.14), transparent 58%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.48));
+}
+
+.siomai-master-shell {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 26px 48px rgba(22, 38, 78, 0.16);
+  backdrop-filter: blur(16px);
+  padding: 1.35rem;
+  color: #11213d;
+}
+
+.siomai-master-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.siomai-master-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+}
+
+.siomai-master-brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.84rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: linear-gradient(140deg, #305ed8, #e55446);
+  box-shadow: 0 10px 24px rgba(54, 76, 145, 0.28);
+}
+
+.siomai-master-brand p {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #18253f;
+}
+
+.siomai-master-brand small {
+  display: block;
+  color: rgba(34, 51, 83, 0.72);
+  margin-top: 0.1rem;
+  font-size: 0.79rem;
+}
+
+.siomai-master-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.siomai-master-nav a {
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid rgba(147, 165, 202, 0.4);
+  background: rgba(255, 255, 255, 0.78);
+  color: #334d7b;
+  font-size: 0.79rem;
+  font-weight: 700;
+  padding: 0.42rem 0.72rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.siomai-master-nav a:hover {
+  transform: translateY(-1px);
+  border-color: rgba(94, 123, 199, 0.55);
+  box-shadow: 0 8px 18px rgba(51, 78, 139, 0.16);
+}
+
+.siomai-master-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 1rem;
+}
+
+.siomai-master-hero-copy,
+.siomai-master-snapshot {
+  border-radius: 22px;
+  border: 1px solid rgba(181, 198, 232, 0.55);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 16px 32px rgba(51, 72, 123, 0.12);
+  padding: 1.25rem;
+}
+
+.siomai-master-eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 174, 158, 0.76);
+  background: rgba(255, 239, 234, 0.9);
+  color: #bd3f33;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+}
+
+.siomai-master-hero-copy h2 {
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  letter-spacing: -0.03em;
+  line-height: 1.07;
+  color: #101a30;
+}
+
+.siomai-master-hero-copy > p {
+  margin: 0.85rem 0 0;
+  color: rgba(32, 49, 79, 0.8);
+  line-height: 1.7;
+}
+
+.siomai-master-pill-row {
+  list-style: none;
+  margin: 0.95rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.siomai-master-pill-row li {
+  border-radius: 999px;
+  border: 1px solid rgba(154, 176, 220, 0.42);
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d466f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.68rem;
+}
+
+.siomai-master-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.siomai-master-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  padding: 0.62rem 0.95rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+
+.siomai-master-btn.primary {
+  color: #fff;
+  background: linear-gradient(135deg, #1f355f, #344e86);
+  box-shadow: 0 10px 20px rgba(36, 56, 104, 0.25);
+}
+
+.siomai-master-btn.ghost {
+  color: #2f436f;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(148, 172, 220, 0.48);
+}
+
+.siomai-master-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.siomai-master-snapshot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.siomai-master-snapshot-head h3 {
+  margin: 0;
+  color: #1a2846;
+  font-size: 1.08rem;
+}
+
+.siomai-master-snapshot-head span {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2b5fd5, #de5348);
+  color: #fff;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  padding: 0.35rem 0.58rem;
+}
+
+.siomai-master-snapshot-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.siomai-master-snapshot-grid > div {
+  border-radius: 12px;
+  border: 1px solid rgba(183, 201, 234, 0.52);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.7rem;
+}
+
+.siomai-master-snapshot-grid > .full {
+  grid-column: 1 / -1;
+}
+
+.siomai-master-snapshot-grid p {
+  margin: 0;
+  color: rgba(38, 59, 97, 0.76);
+  font-size: 0.71rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+}
+
+.siomai-master-snapshot-grid strong {
+  display: block;
+  margin-top: 0.28rem;
+  color: #182746;
+  font-size: 1.03rem;
+}
+
+.siomai-master-snapshot-grid small {
+  color: rgba(40, 59, 95, 0.72);
+}
+
+.siomai-master-note-list {
+  margin: 0.78rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.siomai-master-note-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: rgba(30, 45, 74, 0.82);
+  font-size: 0.87rem;
+}
+
+.siomai-master-note-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.38rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3f73ea, #eb5d4a);
+}
+
+.siomai-master-block {
+  margin-top: 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(180, 198, 233, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 14px 30px rgba(39, 58, 106, 0.1);
+  padding: 1.2rem;
+}
+
+.siomai-master-heading p {
+  margin: 0;
+  color: #cc4f3e;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.siomai-master-heading h3 {
+  margin: 0.35rem 0 0;
+  color: #182746;
+  font-size: clamp(1.25rem, 1.6vw, 1.8rem);
+  letter-spacing: -0.01em;
+}
+
+.siomai-master-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.siomai-master-stat {
+  border-radius: 14px;
+  border: 1px solid rgba(171, 193, 234, 0.52);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 22px rgba(46, 66, 116, 0.1);
+  padding: 0.9rem;
+}
+
+.siomai-master-stat span {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: rgba(46, 69, 114, 0.78);
+}
+
+.siomai-master-stat strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: #182746;
+  font-size: 1.07rem;
+}
+
+.siomai-master-stat small {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(41, 60, 96, 0.74);
+  line-height: 1.4;
+}
+
+.siomai-master-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.85rem;
+}
+
+.siomai-master-feature {
+  border-radius: 14px;
+  border: 1px solid rgba(171, 193, 234, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.9rem;
+}
+
+.siomai-master-feature h4 {
+  margin: 0;
+  color: #1a2b4e;
+  font-size: 0.93rem;
+}
+
+.siomai-master-feature p {
+  margin: 0.45rem 0 0;
+  color: rgba(38, 57, 93, 0.77);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.siomai-master-income-grid,
+.siomai-master-content,
+.siomai-master-bottom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.85rem;
+}
+
+.siomai-master-card {
+  border-radius: 14px;
+  border: 1px solid rgba(168, 190, 232, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 22px rgba(46, 66, 116, 0.1);
+  padding: 0.9rem;
+}
+
+.siomai-master-card.light h4,
+.siomai-master-card.light p {
+  color: #1d2c4e;
+}
+
+.siomai-master-card h4 {
+  margin: 0;
+  font-size: 1.03rem;
+}
+
+.siomai-master-card p {
+  margin: 0.42rem 0 0;
+  line-height: 1.58;
+  font-size: 0.87rem;
+}
+
+.siomai-master-card.dark {
+  background: linear-gradient(160deg, #1b2b52 0%, #121b38 100%);
+  border-color: rgba(120, 148, 212, 0.42);
+  box-shadow: 0 16px 30px rgba(17, 28, 61, 0.28);
+}
+
+.siomai-master-card.dark h4 {
+  color: #f3f7ff;
+}
+
+.siomai-master-card.dark p {
+  color: rgba(222, 231, 255, 0.82);
+}
+
+.siomai-master-metrics {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.siomai-master-metrics li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(170, 193, 236, 0.48);
+  background: rgba(246, 250, 255, 0.95);
+  padding: 0.58rem 0.68rem;
+}
+
+.siomai-master-metrics span {
+  color: rgba(46, 67, 108, 0.8);
+  font-size: 0.82rem;
+}
+
+.siomai-master-metrics strong {
+  color: #1f3056;
+  font-size: 0.84rem;
+}
+
+.siomai-master-income-summary {
+  margin-top: 0.72rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.siomai-master-income-summary > div {
+  border-radius: 10px;
+  border: 1px solid rgba(170, 193, 236, 0.48);
+  background: rgba(250, 252, 255, 0.96);
+  padding: 0.6rem;
+}
+
+.siomai-master-income-summary p {
+  margin: 0;
+  color: rgba(50, 70, 112, 0.76);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+}
+
+.siomai-master-income-summary strong {
+  margin-top: 0.25rem;
+  display: block;
+  color: #21315a;
+  font-size: 0.88rem;
+}
+
+.siomai-master-compute-list {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.48rem;
+}
+
+.siomai-master-compute-list div {
+  border-radius: 10px;
+  border: 1px solid rgba(130, 157, 224, 0.42);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.56rem 0.64rem;
+}
+
+.siomai-master-compute-list span {
+  display: block;
+  color: rgba(202, 216, 255, 0.84);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.siomai-master-compute-list strong {
+  display: block;
+  margin-top: 0.22rem;
+  color: #fff;
+  font-size: 0.82rem;
+}
+
+.siomai-master-highlight {
+  margin-top: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid rgba(95, 128, 208, 0.42);
+  background: linear-gradient(135deg, rgba(239, 72, 72, 0.16), rgba(75, 105, 211, 0.14));
+  padding: 0.64rem;
+}
+
+.siomai-master-highlight p {
+  margin: 0;
+  color: rgba(227, 236, 255, 0.86);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.siomai-master-highlight strong {
+  display: block;
+  margin-top: 0.24rem;
+  color: #fff;
+  font-size: 1.08rem;
+}
+
+.siomai-master-highlight small {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(216, 227, 255, 0.8);
+  font-size: 0.73rem;
+}
+
+.siomai-master-table-meta {
+  color: rgba(50, 70, 112, 0.76);
+  font-size: 0.78rem;
+}
+
+.siomai-master-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.6rem;
+  font-size: 0.81rem;
+}
+
+.siomai-master-table th,
+.siomai-master-table td {
+  padding: 0.48rem 0.34rem;
+  border-bottom: 1px solid rgba(176, 197, 236, 0.55);
+  text-align: left;
+  color: #243762;
+}
+
+.siomai-master-table thead th {
+  color: rgba(49, 70, 112, 0.8);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.siomai-master-table td:last-child,
+.siomai-master-table th:last-child {
+  text-align: right;
+}
+
+.siomai-master-table tfoot td {
+  border-bottom: 0;
+  font-weight: 700;
+}
+
+.siomai-master-table-foot {
+  margin-top: 0.5rem;
+  color: rgba(55, 76, 120, 0.8);
+  font-size: 0.78rem;
+}
+
+.siomai-master-checklist,
+.siomai-master-mini {
+  margin: 0.72rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.46rem;
+}
+
+.siomai-master-checklist li,
+.siomai-master-mini li {
+  position: relative;
+  padding-left: 0.9rem;
+  color: rgba(41, 60, 97, 0.82);
+  font-size: 0.84rem;
+  line-height: 1.48;
+}
+
+.siomai-master-checklist li::before,
+.siomai-master-mini li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3f74ec, #eb5f4b);
+}
+
+.siomai-master-cta {
+  display: flex;
+  flex-direction: column;
+}
+
+.siomai-master-cta .siomai-master-btn {
+  margin-top: 0.8rem;
+  align-self: flex-start;
+}
+
+@media (max-width: 1200px) {
+  .siomai-master-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .siomai-master-nav {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .siomai-master-hero,
+  .siomai-master-income-grid,
+  .siomai-master-content,
+  .siomai-master-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .siomai-master-stat-grid,
+  .siomai-master-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .siomai-master {
+    padding-block: 3.8rem;
+  }
+
+  .siomai-master-shell {
+    border-radius: 22px;
+    padding: 1rem;
+  }
+
+  .siomai-master-nav a {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .siomai-master-actions {
+    flex-direction: column;
+  }
+
+  .siomai-master-btn {
+    width: 100%;
+  }
+
+  .siomai-master-stat-grid,
+  .siomai-master-feature-grid,
+  .siomai-master-snapshot-grid,
+  .siomai-master-income-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .siomai-master-card,
+  .siomai-master-block,
+  .siomai-master-hero-copy,
+  .siomai-master-snapshot {
+    padding: 0.86rem;
+  }
+
+  .siomai-master-cta .siomai-master-btn {
+    align-self: stretch;
+  }
 }
 
 /* Poster modal */
